@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import Pricing from '../components/Pricing.astro';
 ---
 
 <Layout title="Home">
@@ -35,10 +36,10 @@ import Footer from '../components/Footer.astro';
               Explore Template Demos
             </a>
             <a
-              href="/contact"
+              href="#pricing"
               class="w-full sm:w-auto px-8 py-4 rounded-xl bg-dark-card border border-dark-border text-white font-semibold hover:border-gray-600 transition-colors text-center"
             >
-              Request Custom Build
+              View Packages & Pricing
             </a>
           </div>
         </div>
@@ -54,41 +55,41 @@ import Footer from '../components/Footer.astro';
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Service 1 -->
           <div class="p-8 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-colors">
             <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6 font-bold text-xl">
               01
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Custom Web Apps</h3>
+            <h3 class="text-xl font-bold text-white mb-3">Custom Web Engineering</h3>
             <p class="text-gray-400 text-sm leading-relaxed">
               Ultra-fast websites built using Astro and React. Zero lag, 100/100 Lighthouse performance, and built-in mobile optimization.
             </p>
           </div>
 
-          <!-- Service 2 -->
           <div class="p-8 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-colors">
             <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6 font-bold text-xl">
               02
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Turnkey Industry Templates</h3>
+            <h3 class="text-xl font-bold text-white mb-3">Industry Ready Templates</h3>
             <p class="text-gray-400 text-sm leading-relaxed">
-              Pre-engineered, high-converting website layouts for Coaching Institutes, Healthcare Clinics, and Local Retail. Launch in days.
+              Pre-built layouts for Education, Healthcare, Retail, Real Estate, and Food & Hospitality sectors. Get live in days.
             </p>
           </div>
 
-          <!-- Service 3 -->
           <div class="p-8 rounded-2xl bg-dark-card border border-dark-border hover:border-brand-500/50 transition-colors">
             <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center mb-6 font-bold text-xl">
               03
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Local SEO & Google Setup</h3>
+            <h3 class="text-xl font-bold text-white mb-3">Local SEO & Google Maps</h3>
             <p class="text-gray-400 text-sm leading-relaxed">
-              Google Maps integration, Google Business Profile configuration, and structured schema data so local customers find you first.
+              Google Maps placement, Google Business Profile configuration, and structured schema so customers in your area find you first.
             </p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Pricing Section -->
+    <Pricing />
   </main>
 
   <Footer />
