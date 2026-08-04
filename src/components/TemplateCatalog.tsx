@@ -13,7 +13,7 @@ const templates: Template[] = [
   {
     id: 'education',
     name: 'EduPeak Academy',
-    sector: '1. Education & Coaching',
+    sector: '1. Education',
     description: 'Designed for coaching institutes, tuition centers, and academies. Includes course showcases, batch schedules, and student lead generation.',
     themeColor: '#3b82f6',
     features: ['Course Catalog', 'Batch Timetable', 'WhatsApp Admission Trigger', 'Toppers Testimonials'],
@@ -21,7 +21,7 @@ const templates: Template[] = [
   {
     id: 'healthcare',
     name: 'AuraCare Clinic',
-    sector: '2. Healthcare & Clinics',
+    sector: '2. Healthcare',
     description: 'Built for doctors, dental clinics, and diagnostic labs. Features doctor bios, service lists, and an online appointment request widget.',
     themeColor: '#10b981',
     features: ['Doctor Schedules', 'Appointment Booking', 'Emergency Call Button', 'Google Maps Directions'],
