@@ -3,36 +3,58 @@ import React, { useState } from 'react';
 interface Template {
   id: string;
   name: string;
-  category: string;
+  sector: string;
   description: string;
-  price: string;
+  recommendedPack: string;
   themeColor: string;
+  features: string[];
 }
 
 const templates: Template[] = [
   {
-    id: 'coaching',
+    id: 'education',
     name: 'EduPeak Academy',
-    category: 'Coaching & Education',
-    description: 'Course catalog, student enquiry forms, success stories slider, and direct WhatsApp admissions trigger.',
-    price: '₹9,999',
+    sector: '1. Education & Coaching',
+    description: 'Designed for coaching institutes, tuition centers, and academies. Includes course showcases, batch schedules, and student lead generation.',
+    recommendedPack: 'Pulse Pack (₹14,999)',
     themeColor: '#3b82f6',
+    features: ['Course Catalog', 'Batch Timetable', 'WhatsApp Admission Trigger', 'Toppers Testimonials'],
   },
   {
     id: 'healthcare',
     name: 'AuraCare Clinic',
-    category: 'Healthcare & Doctors',
-    description: 'Doctor profiles, direct appointment booking widget, patient reviews, and emergency map launcher.',
-    price: '₹12,999',
+    sector: '2. Healthcare & Clinics',
+    description: 'Built for doctors, dental clinics, and diagnostic labs. Features doctor bios, service lists, and an online appointment request widget.',
+    recommendedPack: 'Pulse Pack (₹14,999)',
     themeColor: '#10b981',
+    features: ['Doctor Schedules', 'Appointment Booking', 'Emergency Call Button', 'Google Maps Directions'],
   },
   {
     id: 'retail',
     name: 'UrbanByte Retail',
-    category: 'Retail & Showrooms',
-    description: 'Digital catalog, WhatsApp order placement, special offer banners, and store locator.',
-    price: '₹11,499',
+    sector: '3. Retail & Showrooms',
+    description: 'Perfect for local boutiques, electronic shops, and stores. Display product catalogs without complex e-commerce maintenance.',
+    recommendedPack: 'Starter Pack (₹9,999)',
     themeColor: '#f59e0b',
+    features: ['Digital Product Catalog', 'Direct WhatsApp Ordering', 'Offers & Banners', 'Store Hours'],
+  },
+  {
+    id: 'realestate',
+    name: 'UrbanSpace Realty',
+    sector: '4. Real Estate & Builders',
+    description: 'Tailored for real estate brokers, property developers, and builders. Showcases residential/commercial listings with floor plan galleries.',
+    recommendedPack: 'Pro Pack (₹19,999)',
+    themeColor: '#8b5cf6',
+    features: ['Property Listings', 'Interactive Floor Plans', 'Agent Contact Card', 'Site Visit Booking'],
+  },
+  {
+    id: 'hospitality',
+    name: 'Savoria Bistro & Cafe',
+    sector: '5. Food & Hospitality',
+    description: 'Crafted for restaurants, cafes, and cloud kitchens. Highlights dynamic food menus, online table reservations, and location info.',
+    recommendedPack: 'Pulse Pack (₹14,999)',
+    themeColor: '#ef4444',
+    features: ['Digital Food Menu', 'Table Reservation Form', 'Zomato/Swiggy Links', 'Ambiance Gallery'],
   },
 ];
 
@@ -43,60 +65,67 @@ export default function TemplateCatalog() {
   return (
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       {/* Sidebar Selector */}
-      <div class="lg:col-span-4 space-y-4">
-        <h3 class="text-lg font-bold text-white mb-4">Select Template Industry</h3>
-        {templates.map((tpl) => (
-          <button
-            key={tpl.id}
-            onClick={() => setSelectedTemplate(tpl)}
-            class={`w-full text-left p-5 rounded-xl border transition-all ${
-              selectedTemplate.id === tpl.id
-                ? 'bg-dark-card border-brand-500 shadow-lg shadow-brand-500/10'
-                : 'bg-dark-card/40 border-dark-border hover:border-gray-700'
-            }`}
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-semibold uppercase tracking-wider text-brand-500">
-                {tpl.category}
-              </span>
-              <span class="text-sm font-bold text-white">{tpl.price}</span>
-            </div>
-            <h4 class="text-lg font-bold text-white mb-1">{tpl.name}</h4>
-            <p class="text-xs text-gray-400">{tpl.description}</p>
-          </button>
-        ))}
+      <div class="lg:col-span-5 space-y-4">
+        <h3 class="text-lg font-bold text-white mb-2">Select Industry Sector</h3>
+        <p class="text-xs text-gray-400 mb-6">Choose a pre-designed layout tailored specifically for your target business sector.</p>
+
+        <div class="space-y-3">
+          {templates.map((tpl) => (
+            <button
+              key={tpl.id}
+              onClick={() => setSelectedTemplate(tpl)}
+              class={`w-full text-left p-4 rounded-xl border transition-all ${
+                selectedTemplate.id === tpl.id
+                  ? 'bg-dark-card border-brand-500 shadow-lg shadow-brand-500/10'
+                  : 'bg-dark-card/40 border-dark-border hover:border-gray-700'
+              }`}
+            >
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-bold uppercase tracking-wider" style={{ color: tpl.themeColor }}>
+                  {tpl.sector}
+                </span>
+                <span class="text-[10px] font-mono bg-dark-bg px-2 py-0.5 rounded text-gray-400 border border-dark-border">
+                  {tpl.recommendedPack}
+                </span>
+              </div>
+              <h4 class="text-base font-bold text-white mb-1">{tpl.name}</h4>
+              <p class="text-xs text-gray-400 line-clamp-2">{tpl.description}</p>
+            </button>
+          ))}
+        </div>
 
         {/* Action Button */}
         <div class="pt-4">
           <a
-            href={`/contact?template=${selectedTemplate.id}`}
-            class="block w-full py-3 px-4 rounded-xl bg-brand-500 text-black text-center font-bold hover:bg-brand-600 transition-colors"
+            href={`/contact?template=${encodeURIComponent(selectedTemplate.name)}`}
+            class="block w-full py-3.5 px-4 rounded-xl bg-brand-500 text-black text-center font-bold hover:bg-brand-600 transition-colors shadow-lg shadow-brand-500/20 text-sm"
           >
-            Order This Template ({selectedTemplate.price})
+            Request Customization for {selectedTemplate.name}
           </a>
         </div>
       </div>
 
       {/* Live Preview Canvas */}
-      <div class="lg:col-span-8 bg-dark-card border border-dark-border rounded-2xl p-4 sm:p-6">
-        {/* Device Mode Switcher */}
+      <div class="lg:col-span-7 bg-dark-card border border-dark-border rounded-2xl p-4 sm:p-6 sticky top-24">
+        {/* Header Bar */}
         <div class="flex items-center justify-between pb-4 mb-4 border-b border-dark-border">
-          <span class="text-sm text-gray-400 font-mono">
-            Previewing: <strong class="text-white">{selectedTemplate.name}</strong>
-          </span>
+          <div>
+            <span class="text-xs text-gray-400 block font-mono">Live Sector Demo</span>
+            <strong class="text-white text-base">{selectedTemplate.name}</strong>
+          </div>
           <div class="flex items-center gap-2 bg-dark-bg p-1 rounded-lg border border-dark-border">
             <button
               onClick={() => setViewMode('desktop')}
-              class={`px-3 py-1 rounded text-xs font-semibold ${
-                viewMode === 'desktop' ? 'bg-brand-500 text-black' : 'text-gray-400'
+              class={`px-3 py-1 rounded text-xs font-semibold transition-colors ${
+                viewMode === 'desktop' ? 'bg-brand-500 text-black' : 'text-gray-400 hover:text-white'
               }`}
             >
               Desktop
             </button>
             <button
               onClick={() => setViewMode('mobile')}
-              class={`px-3 py-1 rounded text-xs font-semibold ${
-                viewMode === 'mobile' ? 'bg-brand-500 text-black' : 'text-gray-400'
+              class={`px-3 py-1 rounded text-xs font-semibold transition-colors ${
+                viewMode === 'mobile' ? 'bg-brand-500 text-black' : 'text-gray-400 hover:text-white'
               }`}
             >
               Mobile
@@ -105,47 +134,52 @@ export default function TemplateCatalog() {
         </div>
 
         {/* Mock Screen Content */}
-        <div class="flex justify-center bg-black/40 p-4 rounded-xl min-h-[420px] items-center">
+        <div class="flex justify-center bg-black/50 p-4 sm:p-6 rounded-xl min-h-[460px] items-center border border-dark-border/50">
           <div
-            class={`transition-all duration-300 border border-dark-border rounded-xl bg-dark-bg p-6 w-full ${
-              viewMode === 'mobile' ? 'max-w-[340px]' : 'max-w-full'
+            class={`transition-all duration-300 border border-dark-border rounded-xl bg-dark-bg p-5 w-full shadow-2xl ${
+              viewMode === 'mobile' ? 'max-w-[320px]' : 'max-w-full'
             }`}
           >
-            {/* Header Mock */}
-            <div class="flex justify-between items-center mb-8 border-b border-dark-border pb-4">
-              <div class="font-bold text-white text-sm" style={{ color: selectedTemplate.themeColor }}>
+            {/* Mock Header */}
+            <div class="flex justify-between items-center mb-6 border-b border-dark-border pb-3">
+              <div class="font-bold text-sm" style={{ color: selectedTemplate.themeColor }}>
                 {selectedTemplate.name}
               </div>
-              <div class="w-16 h-6 rounded bg-gray-800 animate-pulse"></div>
+              <div class="flex gap-1.5">
+                <div class="w-12 h-4 rounded bg-gray-800"></div>
+                <div class="w-12 h-4 rounded bg-gray-800"></div>
+              </div>
             </div>
 
-            {/* Banner Mock */}
-            <div class="rounded-xl p-6 mb-6 text-center" style={{ backgroundColor: `${selectedTemplate.themeColor}15` }}>
-              <div class="text-lg font-bold text-white mb-2">
-                Welcome to {selectedTemplate.name}
+            {/* Mock Banner */}
+            <div class="rounded-xl p-5 mb-5 text-center relative overflow-hidden" style={{ backgroundColor: `${selectedTemplate.themeColor}15` }}>
+              <span class="text-[10px] font-mono uppercase tracking-wider font-semibold block mb-1" style={{ color: selectedTemplate.themeColor }}>
+                {selectedTemplate.sector}
+              </span>
+              <div class="text-base font-bold text-white mb-2">
+                Grow Your {selectedTemplate.name.split(' ')[0]} Business
               </div>
-              <p class="text-xs text-gray-400 mb-4">
-                Premier solutions for {selectedTemplate.category} in Bhubaneswar.
+              <p class="text-xs text-gray-400 mb-4 max-w-xs mx-auto">
+                Modern digital experience designed specifically for higher conversions.
               </p>
               <button
-                class="px-4 py-2 rounded text-xs font-bold text-white"
+                class="px-4 py-2 rounded-lg text-xs font-bold text-white shadow-md"
                 style={{ backgroundColor: selectedTemplate.themeColor }}
               >
-                Enquire Now
+                Get Started
               </button>
             </div>
 
-            {/* Grid Mock */}
-            <div class="grid grid-cols-2 gap-3">
-              <div class="p-3 bg-dark-card rounded border border-dark-border">
-                <div class="w-6 h-6 rounded mb-2" style={{ backgroundColor: selectedTemplate.themeColor }}></div>
-                <div class="h-3 bg-gray-800 rounded w-3/4 mb-1"></div>
-                <div class="h-2 bg-gray-900 rounded w-1/2"></div>
-              </div>
-              <div class="p-3 bg-dark-card rounded border border-dark-border">
-                <div class="w-6 h-6 rounded mb-2" style={{ backgroundColor: selectedTemplate.themeColor }}></div>
-                <div class="h-3 bg-gray-800 rounded w-3/4 mb-1"></div>
-                <div class="h-2 bg-gray-900 rounded w-1/2"></div>
+            {/* Feature Pills */}
+            <div class="mb-4">
+              <span class="text-[10px] font-mono text-gray-400 uppercase tracking-wider block mb-2">Included Modules:</span>
+              <div class="grid grid-cols-2 gap-2">
+                {selectedTemplate.features.map((feat) => (
+                  <div key={feat} class="p-2 bg-dark-card rounded border border-dark-border text-[11px] text-gray-300 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: selectedTemplate.themeColor }}></span>
+                    <span class="truncate">{feat}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
