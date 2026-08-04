@@ -5,7 +5,6 @@ interface Template {
   name: string;
   sector: string;
   description: string;
-  recommendedPack: string;
   themeColor: string;
   features: string[];
 }
@@ -16,7 +15,6 @@ const templates: Template[] = [
     name: 'EduPeak Academy',
     sector: '1. Education & Coaching',
     description: 'Designed for coaching institutes, tuition centers, and academies. Includes course showcases, batch schedules, and student lead generation.',
-    recommendedPack: 'Pulse Pack (₹14,999)',
     themeColor: '#3b82f6',
     features: ['Course Catalog', 'Batch Timetable', 'WhatsApp Admission Trigger', 'Toppers Testimonials'],
   },
@@ -25,7 +23,6 @@ const templates: Template[] = [
     name: 'AuraCare Clinic',
     sector: '2. Healthcare & Clinics',
     description: 'Built for doctors, dental clinics, and diagnostic labs. Features doctor bios, service lists, and an online appointment request widget.',
-    recommendedPack: 'Pulse Pack (₹14,999)',
     themeColor: '#10b981',
     features: ['Doctor Schedules', 'Appointment Booking', 'Emergency Call Button', 'Google Maps Directions'],
   },
@@ -34,7 +31,6 @@ const templates: Template[] = [
     name: 'UrbanByte Retail',
     sector: '3. Retail & Showrooms',
     description: 'Perfect for local boutiques, electronic shops, and stores. Display product catalogs without complex e-commerce maintenance.',
-    recommendedPack: 'Starter Pack (₹9,999)',
     themeColor: '#f59e0b',
     features: ['Digital Product Catalog', 'Direct WhatsApp Ordering', 'Offers & Banners', 'Store Hours'],
   },
@@ -43,7 +39,6 @@ const templates: Template[] = [
     name: 'UrbanSpace Realty',
     sector: '4. Real Estate & Builders',
     description: 'Tailored for real estate brokers, property developers, and builders. Showcases residential/commercial listings with floor plan galleries.',
-    recommendedPack: 'Pro Pack (₹19,999)',
     themeColor: '#8b5cf6',
     features: ['Property Listings', 'Interactive Floor Plans', 'Agent Contact Card', 'Site Visit Booking'],
   },
@@ -52,7 +47,6 @@ const templates: Template[] = [
     name: 'Savoria Bistro & Cafe',
     sector: '5. Food & Hospitality',
     description: 'Crafted for restaurants, cafes, and cloud kitchens. Highlights dynamic food menus, online table reservations, and location info.',
-    recommendedPack: 'Pulse Pack (₹14,999)',
     themeColor: '#ef4444',
     features: ['Digital Food Menu', 'Table Reservation Form', 'Zomato/Swiggy Links', 'Ambiance Gallery'],
   },
@@ -83,9 +77,6 @@ export default function TemplateCatalog() {
               <div class="flex items-center justify-between mb-1">
                 <span class="text-xs font-bold uppercase tracking-wider" style={{ color: tpl.themeColor }}>
                   {tpl.sector}
-                </span>
-                <span class="text-[10px] font-mono bg-dark-bg px-2 py-0.5 rounded text-gray-400 border border-dark-border">
-                  {tpl.recommendedPack}
                 </span>
               </div>
               <h4 class="text-base font-bold text-white mb-1">{tpl.name}</h4>
