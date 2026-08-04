@@ -1,0 +1,49 @@
+---
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Templates Catalog', href: '/templates' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-dark-bg/80 border-b border-dark-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-emerald-400 flex items-center justify-center font-bold text-black text-xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+          SR
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg tracking-tight text-white group-hover:text-brand-500 transition-colors">
+            SR Innovation Labs
+          </span>
+          <span class="text-xs text-gray-400 font-mono">Digital Studio</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors"
+          >
+            {link.name}
+          </a>
+        ))}
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="flex items-center gap-4">
+        <a
+          href="/contact"
+          class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-black bg-brand-500 rounded-lg hover:bg-brand-600 transition-all shadow-md hover:shadow-brand-500/20 active:scale-95"
+        >
+          Get Free Proposal
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
