@@ -1,0 +1,123 @@
+---
+const packages = [
+  {
+    name: "Starter Pack",
+    price: "₹9,999",
+    tagline: "Ideal for local shops, small clinics & professionals starting out.",
+    features: [
+      "Up to 3 Custom Pages",
+      "1 Year Front-End Hosting Configuration",
+      "Mobile & Tablet Responsive",
+      "WhatsApp Direct Chat Button",
+      "Google Maps Integration",
+      "100/100 Lighthouse Performance",
+      "Basic On-Page SEO Setup",
+    ],
+    highlighted: false,
+    ctaText: "Get Starter Pack",
+  },
+  {
+    name: "Pulse Pack",
+    price: "₹14,999",
+    tagline: "Most popular for growing coaching institutes & businesses.",
+    features: [
+      "Up to 5 Custom Pages",
+      "1 Year Front-End Hosting Configuration",
+      "Interactive Lead Forms / Inquiry Modals",
+      "Google Business Profile Setup & Sync",
+      "Dynamic Industry Template Switcher",
+      "Priority WhatsApp & Phone Support",
+      "Fast 5-7 Day Delivery",
+    ],
+    highlighted: true,
+    ctaText: "Choose Pulse Pack",
+  },
+  {
+    name: "Pro Pack",
+    price: "₹19,999",
+    tagline: "Complete web solution for established enterprises & centers.",
+    features: [
+      "Up to 7 Custom Pages",
+      "1 Year Front-End Hosting Configuration",
+      "Custom React Widgets & Interactive Features",
+      "Complete Local SEO & Schema Optimization",
+      "CMS / Content Editing Guidance",
+      "Custom Domain & DNS Setup",
+      "3 Months Dedicated Maintenance",
+    ],
+    highlighted: false,
+    ctaText: "Get Pro Pack",
+  },
+];
+---
+
+<section id="pricing" class="py-24 bg-dark-bg border-t border-dark-border relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-brand-500 font-semibold text-xs tracking-widest uppercase mb-2 block">Transparent Pricing</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Development Packages</h2>
+      <p class="text-gray-400 text-base">
+        Transparent, upfront pricing with zero hidden fees. Choose the pack that fits your current business scale.
+      </p>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-12">
+      {packages.map((pkg) => (
+        <div class={`rounded-2xl p-8 flex flex-col justify-between transition-all relative ${
+          pkg.highlighted 
+            ? 'bg-dark-card border-2 border-brand-500 shadow-xl shadow-brand-500/10 -translate-y-2' 
+            : 'bg-dark-card/60 border border-dark-border hover:border-gray-700'
+        }`}>
+          {pkg.highlighted && (
+            <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-500 text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              Most Popular
+            </span>
+          )}
+
+          <div>
+            <h3 class="text-xl font-bold text-white mb-2">{pkg.name}</h3>
+            <p class="text-xs text-gray-400 mb-6 min-h-[32px]">{pkg.tagline}</p>
+
+            <div class="flex items-baseline gap-1 mb-8">
+              <span class="text-4xl font-extrabold text-white">{pkg.price}</span>
+              <span class="text-xs text-gray-400">/ one-time</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              {pkg.features.map((feat) => (
+                <li class="flex items-start gap-3 text-sm text-gray-300">
+                  <svg class="w-5 h-5 text-brand-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a
+            href={`/contact?package=${encodeURIComponent(pkg.name)}`}
+            class={`w-full py-3.5 px-4 rounded-xl font-bold text-sm text-center transition-all ${
+              pkg.highlighted
+                ? 'bg-brand-500 text-black hover:bg-brand-600 shadow-md shadow-brand-500/20'
+                : 'bg-dark-bg border border-dark-border text-white hover:border-gray-600'
+            }`}
+          >
+            {pkg.ctaText}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Hosting Disclaimer Note -->
+    <div class="max-w-3xl mx-auto bg-dark-card/40 border border-dark-border rounded-xl p-4 text-xs text-gray-400 flex items-start gap-3">
+      <svg class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <p>
+        <strong class="text-gray-300">Hosting Note:</strong> All packages include 1 year of setup & configuration for Static / Front-End (FE) cloud hosting (Netlify / Vercel / Cloudflare). Any backend database, custom Node.js servers, or VPS infrastructure will incur separate server cost.
+      </p>
+    </div>
+  </div>
+</section>
