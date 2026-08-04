@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'class',
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     theme: {
       extend: {
@@ -16,6 +17,11 @@ export default {
             card: '#121216',
             border: '#22222a',
           },
+          light: {
++           bg: '#ffffff',
++           card: '#f8fafc',
++           border: '#e2e8f0',
++         }
         },
       },
     },
